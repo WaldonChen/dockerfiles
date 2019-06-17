@@ -8,7 +8,7 @@ RUN apt-get update && apt upgrade -y
 RUN apt-get install -y -q   \
         apt-utils sudo      \
         build-essential     \
-        qt-creator          \
+        qtcreator           \
         qt5-default
 
 # qt5-doc, qt5-doc-html, qtbase5-doc-html, qtbase5-examples
