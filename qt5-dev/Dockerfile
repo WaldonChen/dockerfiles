@@ -13,6 +13,11 @@ RUN apt-get install -y -q   \
 
 # qt5-doc, qt5-doc-html, qtbase5-doc-html, qtbase5-examples
 
+## Clean
+RUN apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+## Add user
 # Replace 1000 with your user / group id
 RUN export uid=1000 gid=1000 && \
     mkdir -p /home/developer && \
@@ -24,9 +29,5 @@ RUN export uid=1000 gid=1000 && \
 
 USER developer
 ENV HOME /home/developer
-
-## Clean
-RUN apt-get clean && \
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 CMD ["/bin/bash"]
