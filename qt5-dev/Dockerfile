@@ -3,19 +3,17 @@ MAINTAINER Waldon Chen "waldonchen@gmail.com"
 ENV DEBIAN_FRONTEND noninteractive
 
 ## Install prerequisite packages
-RUN sed -i 's/archive.ubuntu.com/mirrors.tuna.tsinghua.edu.cn/g' /etc/apt/sources.list
-RUN apt-get update && apt upgrade -y
-RUN apt-get install -y -q   \
-        apt-utils sudo      \
-        build-essential     \
-        qtcreator           \
-        qt5-default
+RUN sed -i 's/archive.ubuntu.com/mirrors.tuna.tsinghua.edu.cn/g' /etc/apt/sources.list \
+ && apt-get update && apt upgrade -y \
+ && apt-get install -y -q --no-install-recommends \
+    apt-utils sudo      \
+    build-essential     \
+    qtcreator           \
+    qt5-default         \
+ && apt-get clean       \
+ && rm -rf /var/lib/apt/lists/*
 
 # qt5-doc, qt5-doc-html, qtbase5-doc-html, qtbase5-examples
-
-## Clean
-RUN apt-get clean && \
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ## Add user
 # Replace 1000 with your user / group id
@@ -29,5 +27,8 @@ RUN export uid=1000 gid=1000 && \
 
 USER developer
 ENV HOME /home/developer
+
+## Clean
+RUN rm -rf /tmp/* /var/tmp/*
 
 CMD ["/bin/bash"]
