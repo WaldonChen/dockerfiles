@@ -17,7 +17,7 @@ RUN unzip /tmp/bazel-${BAZEL_VERSION}-dist.zip -d /tmp/bazel-${BAZEL_VERSION};
 ## Build bazel from scratch
 RUN cd /tmp/bazel-${BAZEL_VERSION}/;
     CC=`which gcc` bash ./compile.sh
-RUN ln -s /tmp/bazel-0.25.2/output/bazel /usr/bin/bazel
+RUN cp /tmp/bazel-0.25.2/output/bazel /usr/bin/bazel
 
 ## Clean
 RUN rm -rf /tmp/* /var/tmp/*
