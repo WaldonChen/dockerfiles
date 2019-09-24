@@ -16,7 +16,7 @@ RUN unzip /tmp/bazel-${BAZEL_VERSION}-dist.zip -d /tmp/bazel-${BAZEL_VERSION};
 
 ## Build bazel from scratch
 RUN cd /tmp/bazel-${BAZEL_VERSION}/;
-    CC=`which gcc` bash ./compile.sh
+    CC=`/opt/rh/devtoolset-7/root/usr/bin/gcc` bash ./compile.sh
 RUN cp /tmp/bazel-0.25.2/output/bazel /usr/bin/bazel
 
 ## Clean
