@@ -4,7 +4,7 @@ LABEL version="1.0" maintainer="Waldon Chen <waldonchen@gmail.com>"
 ## Installing prerequisite packages
 RUN yum install -y centos-release-scl && \
     yum install -y devtoolset-7 python27 rh-git29 \
-                   java-1.8.0-openjdk-devel wget && \
+                   java-1.8.0-openjdk-devel wget tar && \
     yum clean all
 
 ENV BAZEL_VERSION=0.26.1 \
