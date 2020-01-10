@@ -13,8 +13,7 @@ ENV BAZEL_VERSION=0.26.1 \
 
 ## Download and extract to /tmp
 ## Build bazel from scratch
-RUN wget https://github.com/bazelbuild/bazel/releases/download/${BAZEL_VERSION}/bazel-${BAZEL_VERSION}-dist.zip -O - | &&
-    tar xC /tmp && \
+RUN wget https://github.com/bazelbuild/bazel/releases/download/${BAZEL_VERSION}/bazel-${BAZEL_VERSION}-dist.zip -O - | tar xC /tmp && \
     cd /tmp/bazel-${BAZEL_VERSION}/ && \
     source scl_source enable devtoolset-7 python27 rh-git29 && \
     bash ./compile.sh && \
